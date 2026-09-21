@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>PitWall — ліга університетських інженерних перегонів</title>
+<title>LovkoTech — ліга університетських інженерних перегонів</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
 <style>
 :root{
@@ -182,9 +182,9 @@ svg.track{width:100%;height:auto;display:block;overflow:visible}
 <body>
 <header>
   <div class="wrap bar">
-    <button class="logo" data-go="home" aria-label="PitWall — на головну">
+    <button class="logo" data-go="home" aria-label="LovkoTech — на головну">
       <svg width="30" height="20" viewBox="0 0 30 20" aria-hidden="true"><path d="M6 0h8L8 20H0z" fill="#E10600"/><path d="M17 0h13l-6 20H11z" fill="#16161A"/></svg>
-      PitWall
+      LovkoTech
     </button>
     <nav class="main" id="nav" aria-label="Розділи">
       <button data-go="home">Головна</button>
@@ -201,7 +201,7 @@ svg.track{width:100%;height:auto;display:block;overflow:visible}
   <div class="wrap partners-head"><h2 class="sec-title" id="partners-title">Спонсори та партнери</h2><button class="btn sm" data-a="partner"><span class="chev">Стати партнером</span></button></div>
   <div class="marquee" id="marquee"></div>
 </section>
-<footer><div class="wrap">PitWall — демо платформи для Youthquake 2026. Команди, конструктори, постачальники, спонсори й результати в демо вигадані; назви університетів використано лише для ілюстрації і не означають партнерства.</div></footer>
+<footer><div class="wrap">LovkoTech — демо платформи для Youthquake 2026. Команди, конструктори, постачальники, спонсори й результати в демо вигадані; назви університетів використано лише для ілюстрації і не означають партнерства.</div></footer>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
@@ -286,7 +286,7 @@ function demoData(){
     ["s4","Шасі-Про","Харків","Механіка","Карбонові пластини, підвіска для масштабу 1:10",false]
   ].map(([id,name,city,category,offers,verified])=>({id,name,city,category,offers,verified}));
   const announcements=[
-    ["a1","Кубок PitWall · Етап 1","2026-11-14","Міні-боліди 1:10","u1","registration","Перший міжвузівський етап. Реєстрація команд і техком — онлайн."],
+    ["a1","Кубок LovkoTech · Етап 1","2026-11-14","Міні-боліди 1:10","u1","registration","Перший міжвузівський етап. Реєстрація команд і техком — онлайн."],
     ["a2","Autonomy Challenge","2026-12-05","Автономні мікродрони","u3","soon","Автономне проходження воріт без пілота. Регламент буде опубліковано 1 листопада."],
     ["a3","Зимовий спринт","2027-02-20","Міні-боліди 1:10","","vote","Місце проведення обирають учасники: голосуйте за трасу."]
   ].map(([id,title,date,cls,venueUniId,status,body])=>({id,title,date,cls,venueUniId,status,body}));
@@ -294,7 +294,7 @@ function demoData(){
   const teams=[["t1","Dnipro Volt","u1","b1",2.6,7.4,[1,1,1,1]],["t2","Odesa Current","u5","b4",2.8,7.4,[1,1,1,1]],["t3","KPI Apex","u2","b2",2.9,11.1,[1,1,1,1]],["t4","Lviv Torque","u3","",3.2,11.1,[0,1,1,0]]]
     .map(([id,name,uniId,buildId,mass,volt,c],i)=>({id,name,uniId,buildId,mass,volt,createdAt:now+i,checks:{mass:!!c[0],estop:!!c[1],battery:!!c[2],sensors:!!c[3]}}));
   const laps=[["t1",42310,0],["t2",43880,2000],["t3",41975,0],["t1",41620,0],["t2",42410,0],["t3",42050,2000]].map(([teamId,ms,penaltyMs],i)=>({id:"l"+i,teamId,ms,penaltyMs,at:now-60000+i*5000}));
-  const event={name:"Кубок PitWall · Етап 1",cls:"Міні-боліди 1:10",date:"2026-11-14",venueUniId:"u1",
+  const event={name:"Кубок LovkoTech · Етап 1",cls:"Міні-боліди 1:10",date:"2026-11-14",venueUniId:"u1",
     rules:["Старт з місця за сигналом судді","Коло зараховується після проходження всіх воріт","Пропущені ворота — штраф +2 секунди","У залік іде найкраще коло з урахуванням штрафів","До заїзду допускаються лише машини, що пройшли техком"]};
   return{event,universities,builds,suppliers,announcements,votes,teams,laps};
 }
@@ -424,7 +424,7 @@ function vMakers(){
   const f=ui.makerFilter;
   const items=[...state.suppliers.map(s=>({...s,kind:"supplier"})),...state.universities.filter(u=>u.manufacture).map(u=>({id:u.id,name:u.name,city:u.city,category:"Університет-виробник",offers:u.capabilities,verified:u.verified,kind:"uni"}))]
     .filter(x=>f==="all"||x.kind===f).sort((a,b)=>(b.verified-a.verified)||a.name.localeCompare(b.name,"uk"));
-  return`<div class="head"><div><h1>Постачальники і виробники</h1><p class="lede">Компанії та університетські лабораторії, які постачають компоненти й виготовляють деталі під регламент ліги. Позначка означає, що PitWall перевірив виробника.</p></div></div>
+  return`<div class="head"><div><h1>Постачальники і виробники</h1><p class="lede">Компанії та університетські лабораторії, які постачають компоненти й виготовляють деталі під регламент ліги. Позначка означає, що LovkoTech перевірив виробника.</p></div></div>
   <div class="chips" style="margin-bottom:24px">${[["all","Усі"],["supplier","Постачальники"],["uni","Університети-виробники"]].map(([v,l])=>`<button class="chip" aria-pressed="${f===v}" data-a="mfilter" data-v="${v}">${l}</button>`).join("")}</div>
   <div class="g3">${items.map(x=>`<article class="card cut" style="display:flex;flex-direction:column;gap:10px">
     <div style="display:flex;justify-content:space-between;gap:10px"><h3>${esc(x.name)}</h3>${x.verified?`<span class="verified">${verifiedMark}Перевірено</span>`:`<span class="pending">На перевірці</span>`}</div>
